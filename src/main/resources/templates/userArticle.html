@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>마이페이지</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="p-5 mb-5 text-center bg-light">
+  <h1 class="mb-3">My Page</h1>
+  <h4 class="mb-3">마이페이지에 오신 것을 환영합니다.</h4>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <article>
+        <!-- 게시글 ID를 숨김 필드로 유지 -->
+        <input type="hidden" id="article-id" th:value="${userArticle.id}">
+
+        <!-- 제목: 기본적으로 <h1>, 수정 시 <input> -->
+        <header class="mb-4">
+          <h1 id="title-display" class="fw-bolder mb-1" th:text="${userArticle.title}"></h1>
+          <input type="text" id="title-edit" class="form-control d-none" th:value="${userArticle.title}">
+        </header>
+
+        <!-- 내용: 기본적으로 <p>, 수정 시 <textarea> -->
+        <section class="mb-5">
+          <p id="content-display" class="fs-5 mb-4" th:text="${userArticle.content}"></p>
+          <textarea id="content-edit" class="form-control d-none" rows="5" th:text="${userArticle.content}"></textarea>
+        </section>
+
+        <!-- 버튼 -->
+        <button type="button" id="modify-btn" class="btn btn-primary btn-sm">수정</button>
+        <button type="button" id="save-btn" class="btn btn-success btn-sm d-none">저장</button>
+        <button type="button" id="cancel-btn" class="btn btn-secondary btn-sm d-none">취소</button>
+        <button type="button" id="delete-btn" class="btn btn-danger btn-sm">삭제</button>
+      </article>
+    </div>
+  </div>
+</div>
+
+<script src="/js/article.js"></script>
+</body>
+</html>
